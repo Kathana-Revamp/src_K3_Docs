@@ -1,97 +1,107 @@
-import Link from '@docusaurus/Link';
-import Layout from '@theme/Layout';
+import React from 'react';
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
 import styles from './index.module.css';
 
-const features = [
-  {
-    title: 'Player Guides',
-    description:
-      'Start with setup, launcher flow, characters, equipment, skills, maps, parties, guilds, and PvP basics.',
-  },
-  {
-    title: 'Source-Backed Features',
-    description:
-      'Explore observed systems such as Battle Pass, Codex, pets, vehicles, rankings, item systems, and event PvP.',
-  },
-  {
-    title: 'Support Center',
-    description:
-      'Find troubleshooting notes, known issues, reporting guidance, and the information needed for useful bug reports.',
-  },
-];
-
-function FeatureCard({title, description}) {
+function HomepageHeader() {
+  const {siteConfig} = useDocusaurusContext();
   return (
-    <article className={styles.featureCard}>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </article>
+    <header className={clsx('hero', styles.heroBanner)}>
+      <div className="container">
+        <h1 className="hero__title">{siteConfig.title} Docs</h1>
+        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--primary button--lg"
+            to="/docs/start/getting-started">
+            Player Guide - 5min ⏱️
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            style={{ marginLeft: '1rem' }}
+            to="/docs/developer/architecture-overview">
+            Developer Docs ⚙️
+          </Link>
+        </div>
+      </div>
+    </header>
   );
 }
 
+function Feature({title, description, Svg, link}) {
+  return (
+    <div className={clsx('col col--4')}>
+      <div className="text--center">
+        {/* Placeholder for SVG icon, using an emoji for now as fallback if Svg is not provided */}
+        <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>{Svg}</div>
+      </div>
+      <div className="text--center padding-horiz--md">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        {link && (
+          <Link to={link} className="button button--outline button--primary button--sm">
+            Learn More
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+}
+
+const FeatureList = [
+  {
+    title: 'For Players',
+    Svg: '🎮',
+    description: (
+      <>
+        Learn the basics of character creation, class progression, and mastering the combat systems in Genesis M.
+      </>
+    ),
+    link: '/docs/start/getting-started'
+  },
+  {
+    title: 'For Developers',
+    Svg: '💻',
+    description: (
+      <>
+        Explore the modular architecture of the Kathana 3 Dev Kit, including the DBSRV, TMSRV, and the Next.js Web App.
+      </>
+    ),
+    link: '/docs/developer/architecture-overview'
+  },
+  {
+    title: 'Community & Support',
+    Svg: '🤝',
+    description: (
+      <>
+        Join discussions, report bugs, and read our guidelines to help build a safe and fun environment for everyone.
+      </>
+    ),
+    link: '/docs/support/troubleshooting'
+  },
+];
+
 export default function Home() {
+  const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title="zRan Online"
-      description="Public player documentation for zRan Online">
+      title={`${siteConfig.title} Documentation`}
+      description="Official documentation for Genesis M players and developers.">
+      <HomepageHeader />
       <main>
-        <section className={styles.hero}>
-          <div className="container">
-            <p className={styles.kicker}>Public player documentation</p>
-            <h1>zRan Online</h1>
-            <p className={styles.lead}>
-              Player guides, support notes, known issues, and community contribution paths for zRan Online.
-            </p>
-            <div className={styles.actions}>
-              <Link className="button button--primary button--lg" to="/docs/start/getting-started">
-                Quick Start
-              </Link>
-              <Link className={clsx('button button--secondary button--lg', styles.secondaryAction)} to="/blog">
-                Blog
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.features}>
-          <div className={clsx('container', styles.featureGrid)}>
-            {features.map((feature) => (
-              <FeatureCard key={feature.title} {...feature} />
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.linkGroups}>
-          <div className="container">
-            <div className={styles.groupGrid}>
-              <div>
-                <h2>Docs</h2>
-                <ul>
-                  <li><Link to="/docs/start/getting-started">Getting Started</Link></li>
-                  <li><Link to="/docs/gameplay/game-features">Game Features</Link></li>
-                  <li><Link to="/docs/gameplay/character-basics">Character Basics</Link></li>
-                  <li><Link to="/docs/support/troubleshooting">Troubleshooting</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h2>Community</h2>
-                <ul>
-                  <li><Link to="/docs/support/report-a-bug">Report a Bug</Link></li>
-                  <li><Link to="/docs/support/request-a-feature">Request a Feature</Link></li>
-                  <li><Link to="/docs/community/rules-safety">Rules and Safety</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h2>More</h2>
-                <ul>
-                  <li><Link to="/blog">Blog</Link></li>
-                  <li><Link to="https://github.com/Ran-Online-Development/zRan-EP7-Docs">GitHub</Link></li>
-                </ul>
+        {FeatureList && FeatureList.length > 0 && (
+          <section className={styles.features}>
+            <div className="container" style={{ padding: '4rem 0' }}>
+              <div className="row">
+                {FeatureList.map((props, idx) => (
+                  <Feature key={idx} {...props} />
+                ))}
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
     </Layout>
   );

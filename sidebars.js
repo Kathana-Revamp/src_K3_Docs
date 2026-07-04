@@ -46,6 +46,15 @@ const sidebars = {
         'community/rules-safety',
       ],
     },
+    {
+      type: 'category',
+      label: 'Developer Docs',
+      collapsed: false,
+      items: [
+        'developer/architecture-overview',
+        'developer/genesis-m-webapp',
+      ],
+    },
   ],
 };
 

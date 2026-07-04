@@ -1,14 +1,14 @@
 // @ts-check
 
 const config = {
-  title: 'Kathana Online',
-  tagline: 'Player documentation, support, and community guides',
+  title: 'Genesis M',
+  tagline: 'Official documentation, development guides, and community resources',
 
-  url: 'https://Ran-Online-Development.github.io',
-  baseUrl: '/Kathana3-Docs/',
+  url: 'https://Kathana-Revamp.github.io',
+  baseUrl: '/src_K3_Docs/',
 
-  organizationName: 'Ran-Online-Development',
-  projectName: 'Kathana3-Docs',
+  organizationName: 'Kathana-Revamp',
+  projectName: 'src_K3_Docs',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
@@ -54,7 +54,7 @@ const config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'Kathana Online',
+      title: 'Genesis M',
       items: [
         {
           type: 'docSidebar',
@@ -68,7 +68,7 @@ const config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/Ran-Online-Development/Kathana3-Docs/issues',
+          href: 'https://github.com/Kathana-Revamp/src_K3_Docs/issues',
           label: 'Issues',
           position: 'right',
         },
@@ -99,7 +99,7 @@ const config = {
             },
             {
               label: 'GitHub Issues',
-              href: 'https://github.com/Ran-Online-Development/Kathana3-Docs/issues',
+              href: 'https://github.com/Kathana-Revamp/src_K3_Docs/issues',
             },
           ],
         },
@@ -112,12 +112,12 @@ const config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/Ran-Online-Development/Kathana3-Docs',
+              href: 'https://github.com/Kathana-Revamp/src_K3_Docs',
             },
           ],
         },
       ],
-      copyright: `Copyright (c) ${new Date().getFullYear()} Kathana Online.`,
+      copyright: `Copyright (c) ${new Date().getFullYear()} Genesis M.`,
     },
     prism: {
       theme: require('prism-react-renderer').themes.github,
